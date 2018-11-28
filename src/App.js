@@ -3,10 +3,10 @@ import './App.css';
 
 class App extends Component {
   render() {
-    let helloWorld = 'Now using let';
+    const hello = 'Lets get back to React';
     return (
       <div className="App">
-        <h2>{helloWorld}</h2>
+        <h2>{hello}</h2>
       </div>
     );
   }
