@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {list.map(item =>
+        {this.state.list.map(item =>
           <div key={item.objectID}>
             <span>
               <a href={item.url}>{item.title}</a>
