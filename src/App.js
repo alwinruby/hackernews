@@ -42,8 +42,11 @@ class App extends Component {
     // }
     // const updatedList = this.state.list.filter(isNotId);
 
-    const isNotId = item => item.objectID !== id;
-    const updatedList = this.state.list.filter(isNotId);
+    // const isNotId = item => item.objectID !== id;
+    // const updatedList = this.state.list.filter(isNotId);
+
+    const updatedList = this.state.list.filter(item => item.objectID !== id);
+
   }
 
   render() {
