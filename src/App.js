@@ -54,10 +54,7 @@ class App extends Component {
                 <span>{item.points}</span>
                 <span>
               <button
-                onClick={function(){
-                    console.log(item.objectID)
-                  }
-                }
+                onClick={()=> console.log(item.objectID)}
                 type="button"
               >
                 Dismiss
