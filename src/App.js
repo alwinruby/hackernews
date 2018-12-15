@@ -29,7 +29,13 @@ class App extends Component {
       list: list,
     };
 
+    this.onSearchChange = this.onSearchChange.bind(this);
+
     this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  onSearchChange(event) {
+
   }
 
   onDismiss(id) {
