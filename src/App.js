@@ -26,7 +26,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      list: list,
+      list,
+      searchTerm: '',
     };
 
     this.onSearchChange = this.onSearchChange.bind(this);
