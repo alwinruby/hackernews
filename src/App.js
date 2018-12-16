@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   onSearchChange(event) {
-
+    this.setState({ searchTerm: event.target.value });
   }
 
   onDismiss(id) {
