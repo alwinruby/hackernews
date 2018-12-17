@@ -22,7 +22,7 @@ const list = [
 
 function isSearched(searchTerm) {
   return function(item) {
-    // some condition which returns true or false
+    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
   }
 }
 
