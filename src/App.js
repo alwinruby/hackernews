@@ -20,6 +20,12 @@ const list = [
   },
 ];
 
+function isSearched(searchTerm) {
+  return function(item) {
+    // some condition which returns true or false
+  }
+}
+
 class App extends Component {
 
   constructor(props){
