@@ -55,9 +55,11 @@ class App extends Component {
     return (
       <div className="App">
         <form>
-          <input type="text" />
+          <input type="text"
+          onChange={this.onSearchChange}
+          />
         </form>
-        {this.state.list.map(item => {
+        {this.state.list.filter(isSearched(this.state.searchTerm)).map(item => {
           const onHandleDismiss = () =>
             this.onDismiss(item.objectID);
             return(
