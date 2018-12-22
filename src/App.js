@@ -114,7 +114,7 @@ class Button extends Component {
   render() {
     const {
       onClick,
-      className,
+      className = '',
       children,
     } = this.props;
 
