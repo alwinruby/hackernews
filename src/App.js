@@ -121,8 +121,12 @@ class App extends Component {
 
   onDismiss(id) {
     const isNotId = item => item.objectID !== id;
-    const updatedList = this.state.list.filter(isNotId);
-    this.setState({ list: updatedList });
+    // const updatedList = this.state.list.filter(isNotId);
+    const updatedHits = this.state.result.hits.filter(isNotId);
+    // this.setState({ list: updatedList });
+    this.setState({
+      result: Object.assign({}, this.state.result, { hits: updatedHits })
+    });
   }
 
   render() {
