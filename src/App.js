@@ -8,6 +8,20 @@ const PARAM_SEARCH = 'query=';
 
 const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}`;
 
+const userList = ['Robin', 'Andrew', 'Dan'];
+const additionalUser = 'Jordan';
+//const allUsers = [ ...userList, additionalUser ];
+
+const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
+const age = 28;
+const user = { ...userNames, age };
+
+
+const oldUsers = ['Robin', 'Andrew'];
+const newUsers = ['Dan', 'Jordan'];
+const allUsers = [ ...oldUsers, ...newUsers ];
+
+
 const list = [
   {
     title: 'React',
@@ -125,7 +139,8 @@ class App extends Component {
     const updatedHits = this.state.result.hits.filter(isNotId);
     // this.setState({ list: updatedList });
     this.setState({
-      result: Object.assign({}, this.state.result, { hits: updatedHits })
+      //result: Object.assign({}, this.state.result, { hits: updatedHits })
+      result: { ...this.state.result, hits: updatedHits }
     });
   }
 
