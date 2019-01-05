@@ -10,17 +10,14 @@ const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}`;
 
 const userList = ['Robin', 'Andrew', 'Dan'];
 const additionalUser = 'Jordan';
-//const allUsers = [ ...userList, additionalUser ];
 
 const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
 const age = 28;
 const user = { ...userNames, age };
 
-
 const oldUsers = ['Robin', 'Andrew'];
 const newUsers = ['Dan', 'Jordan'];
 const allUsers = [ ...oldUsers, ...newUsers ];
-
 
 const list = [
   {
@@ -127,19 +124,14 @@ class App extends Component {
     this.fetchSearchTopStories(searchTerm);
   }
 
-
-
   onSearchChange(event) {
     this.setState({ searchTerm: event.target.value });
   }
 
   onDismiss(id) {
     const isNotId = item => item.objectID !== id;
-    // const updatedList = this.state.list.filter(isNotId);
     const updatedHits = this.state.result.hits.filter(isNotId);
-    // this.setState({ list: updatedList });
     this.setState({
-      //result: Object.assign({}, this.state.result, { hits: updatedHits })
       result: { ...this.state.result, hits: updatedHits }
     });
   }
@@ -159,11 +151,14 @@ class App extends Component {
           Search
           </Search>
         </div>
-          <Table
-            list={result.hits}
-            pattern={searchTerm}
-            onDismiss={this.onDismiss}
-          />
+          { result
+            ?  <Table
+                list={result.hits}
+                pattern={searchTerm}
+                onDismiss={this.onDismiss}
+              />
+            :null
+          }
       </div>
     );
   }
