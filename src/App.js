@@ -55,14 +55,31 @@ function isSearched(searchTerm) {
   }
 }
 
-const Search = ({ value, onChange, children }) =>
-  <form>
-    {children} <input
+// const Search = ({ value, onChange, children }) =>
+//   <form>
+//     {children} <input
+//       type="text"
+//       value={value}
+//       onChange={onChange}
+//       />
+//   </form>
+
+const Search = ({
+  value,
+  onChange,
+  onSubmit,
+  children
+}) =>
+  <form onSubmit={onSubmit}>
+    <input
       type="text"
       value={value}
       onChange={onChange}
-      />
-  </form>
+    />
+    <button type="submit">
+      {children}
+    </button>
+</form>
 
   const Table = ({ list, pattern, onDismiss }) =>
     <div className="table">
