@@ -55,15 +55,6 @@ function isSearched(searchTerm) {
   }
 }
 
-// const Search = ({ value, onChange, children }) =>
-//   <form>
-//     {children} <input
-//       type="text"
-//       value={value}
-//       onChange={onChange}
-//       />
-//   </form>
-
 const Search = ({
   value,
   onChange,
@@ -146,9 +137,10 @@ class App extends Component {
     this.setState({ searchTerm: event.target.value });
   }
 
-  onSearchSubmit() {
+  onSearchSubmit(event) {
     const { searchTerm } = this.state;
     this.fetchSearchTopStories(searchTerm);
+    event.preventDefault();
   }
 
   onDismiss(id) {
