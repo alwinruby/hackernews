@@ -8,7 +8,6 @@ const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
 
 const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}`;
-//const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}`;
 
 const userList = ['Robin', 'Andrew', 'Dan'];
 const additionalUser = 'Jordan';
@@ -123,8 +122,6 @@ class App extends Component {
     this.setState({ result });
   }
 
-  //fetchSearchTopStories(searchTerm) {
-    //fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
   fetchSearchTopStories(searchTerm, page = 0) {
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}\
 ${page}`)
@@ -158,9 +155,7 @@ ${page}`)
 
   render() {
     const { searchTerm, result } = this.state;
-
-    //if (!result) { return null; }
-
+    const page = (result && result.page) || 0;
     return (
       <div className="page">
         <div className="interactions">
@@ -175,11 +170,14 @@ ${page}`)
           { result &&
               <Table
                 list={result.hits}
-                //pattern={searchTerm}
                 onDismiss={this.onDismiss}
               />
-            //:null
           }
+          <div className="interactions">
+            <Button onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}>
+              More
+              </Button>
+          </div>
       </div>
     );
   }
