@@ -110,6 +110,7 @@ class App extends Component {
 
     this.state = {
       result: null,
+      searchKey: '',
       searchTerm: DEFAULT_QUERY,
     };
 
@@ -135,9 +136,7 @@ class App extends Component {
   }
 
   fetchSearchTopStories(searchTerm, page = 0) {
-    //fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}\
-//${page}`)
-  fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
+    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
       .then(response => response.json())
       .then(result => this.setSearchTopStories(result))
       .catch(e => e);
@@ -145,6 +144,7 @@ class App extends Component {
 
   componentDidMount() {
     const { searchTerm } = this.state;
+    this.setState({ searchKey: searchTerm });
     this.fetchSearchTopStories(searchTerm);
   }
 
@@ -154,6 +154,7 @@ class App extends Component {
 
   onSearchSubmit(event) {
     const { searchTerm } = this.state;
+    this.setState({ searchKey: searchTerm });
     this.fetchSearchTopStories(searchTerm);
     event.preventDefault();
   }
