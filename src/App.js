@@ -174,29 +174,55 @@ class App extends Component {
   }
 
   render() {
-    const { searchTerm, result } = this.state;
-    const page = (result && result.page) || 0;
+    // const { searchTerm, result } = this.state;
+    // const page = (result && result.page) || 0;
+    // return (
+    //   <div className="page">
+    //     <div className="interactions">
+    //       <Search
+    //         value={searchTerm}
+    //         onChange={this.onSearchChange}
+    //         onSubmit={this.onSearchSubmit}
+    //       >
+    //       Search
+    //       </Search>
+    //     </div>
+    //       { result &&
+    //           <Table
+    //             list={result.hits}
+    //             onDismiss={this.onDismiss}
+    //           />
+    //       }
+    //       <div className="interactions">
+    //         <Button onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}>
+    const {
+        searchTerm,
+        results,
+        searchKey
+      } = this.state;
+    const page = (
+        results &&
+        results[searchKey] &&
+        results[searchKey].page
+      ) || 0;
+    const list = (
+      results &&
+      results[searchKey] &&
+      results[searchKey].hits
+      ) || [];
     return (
       <div className="page">
         <div className="interactions">
-          <Search
-            value={searchTerm}
-            onChange={this.onSearchChange}
-            onSubmit={this.onSearchSubmit}
-          >
-          Search
-          </Search>
+        ...
         </div>
-          { result &&
-              <Table
-                list={result.hits}
-                onDismiss={this.onDismiss}
-              />
-          }
-          <div className="interactions">
-            <Button onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}>
+        <Table
+        list={list}
+        onDismiss={this.onDismiss}
+        />
+        <div className="interactions">
+          <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
               More
-              </Button>
+            </Button>
           </div>
       </div>
     );
