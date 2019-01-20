@@ -112,6 +112,7 @@ class App extends Component {
       result: null,
       searchKey: '',
       searchTerm: DEFAULT_QUERY,
+      error: null,
     };
 
     this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
@@ -148,7 +149,9 @@ class App extends Component {
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
       .then(response => response.json())
       .then(result => this.setSearchTopStories(result))
-      .catch(e => e);
+      // .catch(e => e);
+      .catch(e => this.setState({ error: e }));
+
   }
 
   componentDidMount() {
@@ -174,11 +177,7 @@ class App extends Component {
   }
 
   onDismiss(id) {
-    // const isNotId = item => item.objectID !== id;
-    // const updatedHits = this.state.result.hits.filter(isNotId);
-    // this.setState({
-    //   result: { ...this.state.result, hits: updatedHits }
-    // });
+
     const { searchKey, results } = this.state;
     const { hits, page } = results[searchKey];
     const isNotId = item => item.objectID !== id;
