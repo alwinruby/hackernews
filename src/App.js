@@ -194,7 +194,8 @@ class App extends Component {
     const {
         searchTerm,
         results,
-        searchKey
+        searchKey,
+        error
       } = this.state;
     const page = (
         results &&
@@ -206,6 +207,9 @@ class App extends Component {
       results[searchKey] &&
       results[searchKey].hits
       ) || [];
+    if (error) {
+      return <p>Something went wrong.</p>;
+    }
     return (
       <div className="page">
         <div className="interactions">
