@@ -206,3 +206,9 @@ const Button = ({
   </button>
 
 export default App;
+
+export {
+  Button,
+  Search,
+  Table,
+};
