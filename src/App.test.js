@@ -1,7 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
+
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
 import App, { Search, Button, Table } from './App';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Search', () => {
 
@@ -46,7 +52,12 @@ describe('Table', () => {
       { title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z' },
     ],
   };
-  
+
+  it('shows two items in list', () => {
+    const element = shallow(<Table { ...props } />);
+    expect(element.find('.table-row').length).toBe(2);
+  });
+
   it('renders without crashing', () => {
       const div = document.createElement('div');
       ReactDOM.render(<Table { ...props } />, div);
