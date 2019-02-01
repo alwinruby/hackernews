@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import PropTypes from 'prop-types';
+
+
 const DEFAULT_QUERY = 'redux';
 const DEFAULT_HPP = '100';
 
@@ -204,6 +207,12 @@ const Button = ({
   >
     {children}
   </button>
+
+Button.propTypes = {
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+  children: PropTypes.node,
+};
 
 export default App;
 
