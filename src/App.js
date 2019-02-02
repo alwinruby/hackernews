@@ -209,9 +209,16 @@ const Button = ({
   </button>
 
 Button.propTypes = {
-  onClick: PropTypes.func,
+  // onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
-  children: PropTypes.node,
+  // children: PropTypes.node,
+  children: PropTypes.node.isRequired,
+};
+
+Table.propTypes = {
+  list: PropTypes.array.isRequired,
+  onDismiss: PropTypes.func.isRequired,
 };
 
 export default App;
