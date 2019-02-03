@@ -3,7 +3,6 @@ import './App.css';
 
 import PropTypes from 'prop-types';
 
-
 const DEFAULT_QUERY = 'redux';
 const DEFAULT_HPP = '100';
 
@@ -197,7 +196,7 @@ const Table = ({ list, onDismiss }) =>
 
 const Button = ({
   onClick,
-  className = '',
+  className,
   children,
 }) =>
   <button
@@ -208,11 +207,13 @@ const Button = ({
     {children}
   </button>
 
+Button.defaultProps = {
+  className: '',
+};
+
 Button.propTypes = {
-  // onClick: PropTypes.func,
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
-  // children: PropTypes.node,
   children: PropTypes.node.isRequired,
 };
 
