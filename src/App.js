@@ -106,6 +106,7 @@ class App extends Component {
       results,
       searchKey,
       error,
+      isLoading
     } = this.state;
 
     const page = (
@@ -141,21 +142,21 @@ class App extends Component {
           />
         }
         <div className="interactions">
-          <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
-            More
-          </Button>
+          // <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+          //   More
+          // </Button>
+          { isLoading
+            ? <Loading />
+            : <Button
+              onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+              More
+            </Button>
+          }
         </div>
       </div>
     );
   }
 }
-
-// const Search = ({
-//   value,
-//   onChange,
-//   onSubmit,
-//   children
-// }) =>
 
 class Search extends Component {
   componentDidMount() {
