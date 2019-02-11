@@ -14,6 +14,11 @@ const PARAM_HPP = 'hitsPerPage=';
 
 const Loading = () => <div>Loading ...</div>
 
+const withLoading = (Component) => (props) =>
+  props.isLoading
+    ? <Loading />
+    : <Component { ...props } />
+
 class App extends Component {
   constructor(props) {
     super(props);
