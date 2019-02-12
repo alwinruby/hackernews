@@ -14,10 +14,27 @@ const PARAM_HPP = 'hitsPerPage=';
 
 const Loading = () => <div>Loading ...</div>
 
-const withLoading = (Component) => (props) =>
-  props.isLoading
+const Button = ({ onClick, className = '', children }) =>
+  <button
+    onClick={onClick}
+    className={className}
+    type="button"
+  > {children}
+  </button>
+
+// const withLoading = (Component) => (props) =>
+//   props.isLoading
+//     ? <Loading />
+//     : <Component { ...props } />
+
+const withLoading = (Component) => ({ isLoading, ...rest }) =>
+  isLoading
     ? <Loading />
-    : <Component { ...props } />
+    : <Component { ...rest } />
+
+
+const ButtonWithLoading = withLoading(Button);
+
 
 class App extends Component {
   constructor(props) {
@@ -223,18 +240,18 @@ const Table = ({ list, onDismiss }) =>
     )}
   </div>
 
-const Button = ({
-  onClick,
-  className,
-  children,
-}) =>
-  <button
-    onClick={onClick}
-    className={className}
-    type="button"
-  >
-    {children}
-  </button>
+// const Button = ({
+//   onClick,
+//   className,
+//   children,
+// }) =>
+//   <button
+//     onClick={onClick}
+//     className={className}
+//     type="button"
+//   >
+//     {children}
+//   </button>
 
 Button.defaultProps = {
   className: '',
