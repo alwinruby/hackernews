@@ -22,11 +22,6 @@ const Button = ({ onClick, className = '', children }) =>
   > {children}
   </button>
 
-// const withLoading = (Component) => (props) =>
-//   props.isLoading
-//     ? <Loading />
-//     : <Component { ...props } />
-
 const withLoading = (Component) => ({ isLoading, ...rest }) =>
   isLoading
     ? <Loading />
@@ -34,7 +29,6 @@ const withLoading = (Component) => ({ isLoading, ...rest }) =>
 
 
 const ButtonWithLoading = withLoading(Button);
-
 
 class App extends Component {
   constructor(props) {
@@ -171,7 +165,7 @@ class App extends Component {
         <div className="interactions">
           // <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
           //   More
-          // </Button>
+          </Button>
           { isLoading
             ? <Loading />
             : <Button
@@ -179,6 +173,11 @@ class App extends Component {
               More
             </Button>
           }
+          <ButtonWithLoading
+            isLoading={isLoading}
+            onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+            More
+          </ButtonWithLoading>
         </div>
       </div>
     );
