@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+
+//import fetch from 'isomorphic-fetch';
+import { sortBy } from 'lodash';
+
 import './App.css';
 
 import PropTypes from 'prop-types';
@@ -11,6 +15,14 @@ const PATH_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
 const PARAM_HPP = 'hitsPerPage=';
+
+const SORTS = {
+  NONE: list => list,
+  TITLE: list => sortBy(list, 'title'),
+  AUTHOR: list => sortBy(list, 'author'),
+  COMMENTS: list => sortBy(list, 'num_comments').reverse(),
+  POINTS: list => sortBy(list, 'points').reverse(),
+};
 
 const Loading = () => <div>Loading ...</div>
 
