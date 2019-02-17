@@ -145,7 +145,8 @@ class App extends Component {
       results,
       searchKey,
       error,
-      isLoading
+      isLoading,
+      sortKey
     } = this.state;
 
     const page = (
@@ -177,6 +178,8 @@ class App extends Component {
           </div>
           : <Table
             list={list}
+            sortKey={sortKey}
+            onSort={this.onSort}
             onDismiss={this.onDismiss}
           />
         }
