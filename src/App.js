@@ -232,9 +232,13 @@ class Search extends Component {
   }
 }
 
-const Table = ({ list, onDismiss }) =>
+const Table = ({ list,
+  sortKey,
+  onSort,
+  onDismiss }) =>
   <div className="table">
     {list.map(item =>
+    //{SORTS[sortKey](list).map(item =>
       <div key={item.objectID} className="table-row">
         <span style={{ width: '40%' }}>
           <a href={item.url}>{item.title}</a>
