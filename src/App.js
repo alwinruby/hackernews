@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
-//import fetch from 'isomorphic-fetch';
+import fetch from 'isomorphic-fetch';
 import { sortBy } from 'lodash';
-
+import classNames from 'classnames';
 import './App.css';
 
 import PropTypes from 'prop-types';
@@ -42,6 +41,14 @@ const withLoading = (Component) => ({ isLoading, ...rest }) =>
 
 const ButtonWithLoading = withLoading(Button);
 
+const Sort = ({ sortKey, onSort, children }) =>
+  <Button
+    onClick={() => onSort(sortKey)}
+    className="button-inline"
+  >
+    {children}
+  </Button>
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -53,6 +60,8 @@ class App extends Component {
       error: null,
       isLoading: false,
       sortKey: 'NONE',
+      isSortReverse: false,
+
     };
 
     this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
@@ -303,19 +312,6 @@ const Table = ({
       </div>
     )}
   </div>
-
-// const Button = ({
-//   onClick,
-//   className,
-//   children,
-// }) =>
-//   <button
-//     onClick={onClick}
-//     className={className}
-//     type="button"
-//   >
-//     {children}
-//   </button>
 
 Button.defaultProps = {
   className: '',
