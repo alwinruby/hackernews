@@ -41,14 +41,6 @@ const withLoading = (Component) => ({ isLoading, ...rest }) =>
 
 const ButtonWithLoading = withLoading(Button);
 
-// const Sort = ({ sortKey, onSort, children }) =>
-//   <Button
-//     onClick={() => onSort(sortKey)}
-//     className="button-inline"
-//   >
-//     {children}
-//   </Button>
-
 const Sort = ({
   sortKey,
   activeSortKey,
@@ -62,9 +54,10 @@ const Sort = ({
   return (
     <Button
       onClick={() => onSort(sortKey)}
-      className={sortClass.join(' ')}
+      className={sortClass}
       > {children}
-    </Button> );
+    </Button>
+  );
 }
 
 class App extends Component {
@@ -274,73 +267,7 @@ const Table = ({
     ? sortedList.reverse()
     : sortedList;
 return(
-  // <div className="table">
-  //
-  //   <div className="table-header">
-  //     <span style={{ width: '40%' }}>
-  //       <Sort
-  //         sortKey={'TITLE'}
-  //         onSort={onSort}
-  //         >
-  //         Title
-  //       </Sort>
-  //     </span>
-  //     <span style={{ width: '30%' }}>
-  //     <Sort
-  //         sortKey={'AUTHOR'}
-  //         onSort={onSort}
-  //     >
-  //     Author
-  //       </Sort>
-  //     </span>
-  //     <span style={{ width: '10%' }}>
-  //       <Sort
-  //         sortKey={'COMMENTS'}
-  //         onSort={onSort}
-  //       >
-  //         Comments
-  //       </Sort>
-  //     </span>
-  //     <span style={{ width: '10%' }}>
-  //       <Sort
-  //         sortKey={'POINTS'}
-  //         onSort={onSort}
-  //       >
-  //         Points
-  //       </Sort>
-  //     </span>
-  //     <span style={{ width: '10%' }}>
-  //       Archive
-  //     </span>
-  //   </div>
-  //   {reverseSortedList.map(item =>
-  //
-  //   //{list.map(item =>
-  //   {SORTS[sortKey](list).map(item =>
-  //     <div key={item.objectID} className="table-row">
-  //       <span style={{ width: '40%' }}>
-  //         <a href={item.url}>{item.title}</a>
-  //       </span>
-  //       <span style={{ width: '30%' }}>
-  //         {item.author}
-  //       </span>
-  //       <span style={{ width: '10%' }}>
-  //         {item.num_comments}
-  //       </span>
-  //       <span style={{ width: '10%' }}>
-  //         {item.points}
-  //       </span>
-  //       <span style={{ width: '10%' }}>
-  //         <Button
-  //           onClick={() => onDismiss(item.objectID)}
-  //           className="button-inline"
-  //         >
-  //           Dismiss
-  //         </Button>
-  //       </span>
-  //     </div>
-  //   )}
-  // </div>
+  
     <div className="table">
         <div className="table-header">
           <span style={{ width: '40%' }}>
