@@ -32,16 +32,22 @@ class App extends Component {
       error: null,
       isLoading: false,
       sortKey: 'NONE',
-      isSortReverse: false,
+      //isSortReverse: false,
     };
 
-    this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
+    // this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
+    // this.setSearchTopStories = this.setSearchTopStories.bind(this);
+    // this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
+    // this.onSearchChange = this.onSearchChange.bind(this);
+    // this.onSearchSubmit = this.onSearchSubmit.bind(this);
+    // this.onDismiss = this.onDismiss.bind(this);
+    // this.onSort = this.onSort.bind(this);
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
     this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
-    this.onSearchChange = this.onSearchChange.bind(this);
-    this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.onDismiss = this.onDismiss.bind(this);
-    this.onSort = this.onSort.bind(this);
+    this.onSearchSubmit = this.onSearchSubmit.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
+    this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
   }
 
   onSort(sortKey) {
@@ -198,8 +204,20 @@ const Search = ({
 class Table extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      sortKey: 'NONE',
+      isSortReverse: false,
+    };
+
+    this.onSort = this.onSort.bind(this);
+
   }
+
+  onSort(sortKey) {
+    const isSortReverse = this.state.sortKey === sortKey && !this.state.isSortReverse;
+    this.setState({ sortKey, isSortReverse });
+  }
+
   render() {
     const {
       list,
